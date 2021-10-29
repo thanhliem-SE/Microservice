@@ -4,6 +4,7 @@ import com.example.studentservice.VO.ResponseTemplateVO;
 import com.example.studentservice.entity.Student;
 import com.example.studentservice.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +14,12 @@ import java.util.List;
 public class StudentRestController {
     @Autowired
     private StudentService studentService;
+
+    @Value("${student-service-greeting}")
+    private String welcome;
+
+    @GetMapping("/welcome")
+    public String getWelcome(){return welcome;}
 
     @GetMapping("/")
     public List<ResponseTemplateVO> getListStudentWithDepartment() {
