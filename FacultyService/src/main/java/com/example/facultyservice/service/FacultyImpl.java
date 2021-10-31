@@ -2,11 +2,14 @@ package com.example.facultyservice.service;
 
 import com.example.facultyservice.entity.Faculty;
 import com.example.facultyservice.repository.FacultyRepository;
+import io.github.resilience4j.ratelimiter.RequestNotPermitted;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import io.github.resilience4j.retry.annotation.Retry;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -16,9 +19,9 @@ public class FacultyImpl implements FacultyService {
     private FacultyRepository facultyRepository;
 
     @Override
-    @Retry(name = "basic")
+    @RateLimiter(name = "basic", fallbackMethod = "fallMethodRateLimiter")
     public Faculty getFaculty(int id) {
-        log.info("IN GET FACULTY BY ID");
+        log.info(LocalDateTime.now() + " :GET FACULTY BY ID");
         return facultyRepository.findById(id).get();
     }
 
@@ -42,4 +45,10 @@ public class FacultyImpl implements FacultyService {
     public void deleteFaculty(int id) {
         facultyRepository.deleteById(id);
     }
+
+    public Faculty fallMethodRateLimiter(int id, RequestNotPermitted rnp) {
+        log.info("Request Not Permitted By Many Request");
+        return null;
+    }
+
 }

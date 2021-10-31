@@ -2,6 +2,7 @@ package com.example.facultyservice.controller;
 
 import com.example.facultyservice.entity.Faculty;
 import com.example.facultyservice.service.FacultyService;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
