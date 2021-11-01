@@ -2,5 +2,5 @@ resilience4j:
   retry:
     instances:
       basic:
-        maxRetryAttemps: 3
+        maxRetryAttempts: 3
         waitDuration: 2s
