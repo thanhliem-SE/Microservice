@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/FacultyService/FacultyService.iml" filepath="$PROJECT_DIR$/FacultyService/FacultyService.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Microservice.iml" filepath="$PROJECT_DIR$/.idea/Microservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_boot_api_jwt_ad/SpringBootJWT.iml" filepath="$PROJECT_DIR$/spring_boot_api_jwt_ad/SpringBootJWT.iml" />
     </modules>
   </component>
 </project>
